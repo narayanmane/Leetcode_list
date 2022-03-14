@@ -1,0 +1,28 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        HashSet<Integer> hs= new HashSet<Integer>();
+        for(int num :nums)
+        {
+            hs.add(num);
+        }
+        for(int i=0;i<=nums.length;i++)
+        {
+            if(!hs.contains(i))
+            {
+                return i;
+            }
+           
+        }
+         if(nums.length==1)
+                return nums.length-1;
+        return nums.length+1;
+    }
+}
+
+
+/*
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+
+
+
+*/
