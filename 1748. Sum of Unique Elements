@@ -1,0 +1,19 @@
+class Solution {
+    public int sumOfUnique(int[] nums) {
+         HashMap<Integer, Integer> hmap = new HashMap<Integer, Integer>();
+        int uniqueSum = 0;
+        
+        for(int i = 0; i < nums.length; i++){
+            if(hmap.containsKey(nums[i])){
+                uniqueSum -= hmap.get(nums[i]);
+                hmap.put(nums[i], 0);
+            }
+            else{
+                uniqueSum += nums[i];
+                hmap.put(nums[i], nums[i]);
+            }
+        }
+        return uniqueSum;
+        
+    }
+}
