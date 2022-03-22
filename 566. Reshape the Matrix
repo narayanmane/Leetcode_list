@@ -1,0 +1,25 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        /* if check two matrxi are square matrix or not sqaure matrix*/
+        if(mat.length*mat[0].length !=r*c)
+            return mat;
+        
+        int [][] newmatrix=new int[r][c];
+        int sr=0,sc=0;
+        for(int i=0;i<mat.length;i++)
+        {
+            for(int j=0;j<mat[0].length;j++)
+            {   
+/*to inserate element to end of column then incrase row and reset column */
+                if(sc==c)
+                {
+                    sr++;
+                    sc=0;
+                }
+                newmatrix[sr][sc]=mat[i][j];
+                sc++;
+            }
+        }
+        return newmatrix;
+    }
+}
