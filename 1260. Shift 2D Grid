@@ -1,0 +1,22 @@
+class Solution(object):
+    def shiftGrid(self, grid, k):
+        nrow=len(grid)
+        ncol=len(grid[0])
+        elements=[]
+        for i in grid:
+            elements=elements+i
+        length=len(elements)
+        k=k%length
+        answer=elements[-k:]+elements[:-k]
+        answer_mat=[]
+        counter=0
+        
+        for i in range(nrow):
+            temp=[]
+            for j in range(ncol):
+                temp.append(answer[counter])
+                counter=counter+1
+            answer_mat.append(temp)
+        return answer_mat
+       
+        
