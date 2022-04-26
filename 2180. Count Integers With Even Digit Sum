@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int sumof(int n)
+        {
+            if(n==0)
+                return 0;
+              return (n % 10) + sumof(n / 10) ;
+            
+        }
+    int countEven(int num) {
+        int sum=0;
+        for(int i=2;i<=num;i++)
+        {
+            if(sumof(i)%2==0)
+            {
+                sum++;
+            }
+        }
+        return sum;
+    
+        
+    }
+};
