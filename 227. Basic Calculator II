@@ -1,0 +1,71 @@
+class Solution {
+public:
+	int calculate(string str) {
+		char op = '+';
+		int result = 0, lastNum = 0;
+/*
+	lastNum shall hold any of below values:
+	1. 0
+	2. if say exp is a+b, if curr = b then last = a
+	3. exp : a+b*c/d+e, if curr = e, then last = b*c/d
+*/
+		for (int i = 0; i < str.size(); i++)
+		{
+			if (str[i] == ' ') continue;
+
+			int curr = 0;
+
+			if (str[i] >= '0' && str[i] <= '9')
+			{// only digit
+				while (str[i] && str[i] >= '0' && str[i] <= '9')
+				{
+					curr = curr * 10 + (str[i]-'0');        // brackets to avoid overflow
+					i++;
+				}
+				i--;
+/*
+	if prev operator was '+' or '-', then add result with lastNum
+	and update lastNum
+ Initially   
+	a       -       b   *   c
+	^       ^       ^
+	|       |       |
+	last    op      curr
+
+ after iteration
+	result+=last
+	then
+	a       -       b       *       c
+					^       ^  
+					|       |       
+					last    op
+
+
+*/
+				if (op == '+')
+				{
+					result += lastNum;
+					lastNum = curr;
+				}
+				else if (op == '-')
+				{
+					result += lastNum;
+					lastNum = -curr;
+				}
+				else
+				{
+					if (op == '*')
+						lastNum = lastNum * curr;
+					else    // '/'
+						lastNum = lastNum / curr;
+				}
+			}
+			else
+			{   // if not digit and not space, then it is operator
+				op = str[i];
+			}
+		}
+
+		return result+lastNum;
+	}
+};
