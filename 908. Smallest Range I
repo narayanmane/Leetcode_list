@@ -1,0 +1,13 @@
+class Solution {
+    public int smallestRangeI(int[] nums, int k) {
+        Arrays.sort(nums);
+    int val=nums[nums.length-1]-k-(nums[0]+k);
+    if(val<0){
+        return 0;
+    }
+    else{
+        return val;
+    }
+        
+    }
+}
