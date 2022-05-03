@@ -1,0 +1,23 @@
+/*
+in this program we array copy the array  they are sorted in ascending order 
+and then compaire sorted array and unsorted array 
+*/
+class Solution {
+public:
+    int findUnsortedSubarray(vector<int>& nums) {
+        vector<int> tmp=nums;
+        sort(tmp.begin(),tmp.end());
+        int st=0,end=nums.size()-1;
+        if(nums==tmp)
+        {
+            return 0;
+        }
+        else
+        {
+            
+            while(nums[st]==tmp[st]) st++;
+            while(nums[end]==tmp[end]) end--;
+        }
+        return abs(end-st+1);
+    }
+};
