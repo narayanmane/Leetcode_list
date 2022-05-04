@@ -1,0 +1,55 @@
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+        
+       int cn=0;
+        for(int frist=0;frist<nums.size();frist++)
+        {
+            if(nums[frist]==0)continue;
+            for(int second =frist+1;second<nums.size();second++)
+            {
+                if(nums[second]==0) continue;
+                if(nums[frist] + nums[second] == k)
+                {
+                    nums[frist]=nums[second]=0;
+                    cn++;
+                    break;
+                }
+            }
+        }
+        return cn;
+        
+    }
+    };
+        
+        
+      
+        
+        // by using sort function 
+      
+     /*sort(nums.begin(),nums.end());
+        int l=0,r=nums.size()-1;
+        int cn=0;
+        
+       while(l<r && nums[l]<k)
+        {
+            if(nums[l]+nums[r]==k)
+            {
+                cn++;
+                l++;
+                r--;
+            }
+            else if(nums[l]+nums[r]>k)
+            {
+                r--;
+            }
+            else
+            {
+                l++;
+            }
+        }
+        return cn;
+        
+    }
+
+};*/
