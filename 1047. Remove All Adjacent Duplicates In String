@@ -1,0 +1,30 @@
+/*
+in this program we are the use stack data structer . fistly we are the add string  character in the stack we check wether presence of char in the stack and current char of string are the then we are pop the char other wise the add the add in stack;
+
+next we are the use StringBuilder that is main use to stcak retrive the answer in the FIFO but we are required the answer in  reverse order that use reverse() function 
+
+*/
+
+class Solution {
+    public String removeDuplicates(String s) {
+        Stack<Character> st= new Stack();
+        StringBuilder b = new StringBuilder();
+        for(int i=0;i<s.length();i++)
+        {
+            if(!st.empty() && st.peek()==s.charAt(i))
+            {
+                st.pop();
+            }
+            else
+            {
+                st.add(s.charAt(i));
+            }
+        }
+        while(!st.empty())
+        {
+            b.append(st.pop());
+        }
+        return b.reverse().toString();
+        
+    }
+}
