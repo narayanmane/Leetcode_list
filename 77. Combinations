@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>>ans;
+        void back(int begin,int k,vector<int>&curr,int n){
+        
+            if(curr.size()==k)  // base conadtion 
+            {
+                return ans.push_back(curr);
+            }
+            for(int i= begin;i<n+1;i++)
+            {
+                curr.push_back(i);  // select current element 
+                back(i+1,k,curr,n); // generate combination
+                curr.pop_back(); // proceed next elelment 
+            }
+    }
+    vector<vector<int>> combine(int n, int k) {
+             vector<int> curr;
+        back(1,k,curr,n); 
+        return ans;
+    }
+};
