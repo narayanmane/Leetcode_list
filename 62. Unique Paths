@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        vector<vector<int>>path(n,vector<int>(m));
+        
+        //last row insert is 1
+        for(int c=0;c<m;c++)
+            path[n-1][c]=1;
+        
+        // last column insert is 1
+            for(int r=0;r<n;r++)
+            path[r][m-1]=1;
+        // calculate unique path
+                 for(int r=n-2;r>=0;--r){
+                  for(int c=m-2;c>=0;--c)
+                  {
+                     path[r][c]=path[r][c+1]+path[r+1][c];
+                  }
+                 }
+                 return path[0][0];
+        
+    }
+};
+
+// path[r][c+1]==some row move col 1
+//path[r+1][c]==some col next row
